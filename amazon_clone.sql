@@ -1,7 +1,7 @@
 --use mysql workbench
 
 
-CREATE DATABASE IF NOT EXISTS amazon;
+CREATE DATABASE IF  NOT EXISTS amazon;
 USE amazon;
 
 CREATE TABLE users (

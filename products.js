@@ -74,32 +74,6 @@ function addToCart(id){
 
 
 
-// function searchProducts() {
-
-//     const keyword =
-//     document.getElementById("searchInput")
-//     .value
-//     .toLowerCase();
-
-//     const cards =
-//     document.querySelectorAll("#products .product-card");
-
-//     cards.forEach(card => {
-
-//         const productName =
-//         card.querySelector("h3")
-//         .textContent
-//         .toLowerCase();
-
-//         if(productName.includes(keyword)){
-//             card.style.display = "block";
-//         }
-//         else{
-//             card.style.display = "none";
-//         }
-
-//     });
-// }
 
 function searchProducts() {
 
@@ -111,6 +85,18 @@ function searchProducts() {
 
     const cards =
     document.querySelectorAll("#products .product-card");
+
+    // If input is empty show all products
+    if(keyword === ""){
+
+        cards.forEach(card => {
+
+            card.style.display = "block";
+
+        });
+
+        return;
+    }
 
     let found = false;
 
@@ -131,17 +117,27 @@ function searchProducts() {
             card.style.display = "none";
 
         }
+
     });
 
-    // If no product found, show all products
+    // If wrong product name entered show all products
     if(!found){
 
         cards.forEach(card => {
+
             card.style.display = "block";
+
         });
 
     }
 }
+
+// Auto search while typing
+document
+.getElementById("searchInput")
+.addEventListener("input", searchProducts);
+
+
 window.onload = function(){
 
     const keyword =
@@ -203,3 +199,5 @@ async function searchProduct(keyword){
 function viewproduct(id){
     window.location.href=`product-details.html?id=${id}`;
 }
+
+
