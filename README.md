@@ -24,7 +24,7 @@ Or:
 ## Database Name
 
 ```sql
-amazon_clone
+amazon
 ```
 
 ## Tables
@@ -99,9 +99,8 @@ server Running on http://localhost:5000
 - Admin Product Management
 - Stock Management
 
-## Common Errors
 
-### Unknown column 'username'
+
 Check:
 
 ```sql

@@ -52,7 +52,7 @@ VALUES(
 'Admin',
 'admin@gmail.com',
 'admin123'
-);
+); 
 
 
 insert into products (name,price,image,stock,description
@@ -69,5 +69,4 @@ insert into products (name,price,image,stock,description
 ("Asus Gaming Monitor",14999,"images/asus.png",10,"24-inch Full HD Gamming Mointer with 144Hz Refresh Rate"),
 ("hp Printer",7999,"images/pr.png",10,"hp Printer  with color printer and ALL-in-One ink Tank  Printer"),
 ("Redmi Power Bank",1599,"images/r.png",10,"Redmi Power Bank with 20000mAh fast charging power bank");
-
 

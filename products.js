@@ -72,172 +72,133 @@ function addToCart(id){
 }
 
 
-// async function searchProducts() {
-
-//     const keyword =
-//         document.getElementById("searchInput").value.trim();
-
-//     const response = await fetch(
-//         `http://localhost:5000/search-products?keyword=${keyword}`
-//     );
-
-//     const products = await response.json();
-
-//     let output = "";
-
-//     products.forEach(product => {
-
-//         output += `
-//         <div class="product-card">
-//             <img src="${product.image}">
-//             <h3>${product.name}</h3>
-//             <p>₹${product.price}</p>
-//             <h2>${product.stock}</h2>
-//         </div>
-//         `;
-//     });
-
-//     document.getElementById("productContainer").innerHTML = output;
-// }
-// document
-// .getElementById("searchInput")
-// .addEventListener("keyup", searchProducts);
-
-// async function searchProducts() {
-
-//     const keyword =
-//     document.getElementById("searchInput").value.trim();
-
-//     const response = await fetch(
-//         `http://localhost:5000/search-products?keyword=${keyword}`
-//     );
-
-//     const products = await response.json();
-
-//     let output = "";
-
-//     products.forEach(product => {
-
-//         output += `
-//         <div class="product-card">
-//             <img src="${product.image}">
-//             <h3>${product.name}</h3>
-//             <p>₹${product.price}</p>
-//             <p>Stock: ${product.stock}</p>
-
-//             <button onclick="viewproduct(${product.id})">
-//                 View Details
-//             </button>
-//         </div>
-//         `;
-//     });
-
-//     document.getElementById("productContainer").innerHTML +=
-//     output;
-// }
-
-// document
-// .getElementById("searchInput")
-// .addEventListener("keyup", searchProducts);
 
 
-
-
-
-// async function searchProducts(){
+// function searchProducts() {
 
 //     const keyword =
 //     document.getElementById("searchInput")
 //     .value
-//     .trim();
+//     .toLowerCase();
 
-//     const response = await fetch(
-//         `http://localhost:5000/search-products?keyword=${keyword}`
-//     );
+//     const cards =
+//     document.querySelectorAll("#products .product-card");
 
-//     const products = await response.json();
+//     cards.forEach(card => {
 
-//     let output = "";
+//         const productName =
+//         card.querySelector("h3")
+//         .textContent
+//         .toLowerCase();
 
-//     products.forEach(product=>{
+//         if(productName.includes(keyword)){
+//             card.style.display = "block";
+//         }
+//         else{
+//             card.style.display = "none";
+//         }
 
-//         output += `
-//         <div class="product-card">
-//             <img src="${product.image}">
-//             <h3>${product.name}</h3>
-//             <p>₹${product.price}</p>
-//             <p>Stock: ${product.stock}</p>
-
-//             <button onclick="viewProduct(${product.id})">
-//                 View Details
-//             </button>
-//         </div>
-//         `;
 //     });
-
-//     document.getElementById("productContainer").innerHTML =
-//     output;
 // }
 
+function searchProducts() {
+
+    const keyword =
+    document.getElementById("searchInput")
+    .value
+    .trim()
+    .toLowerCase();
+
+    const cards =
+    document.querySelectorAll("#products .product-card");
+
+    let found = false;
+
+    cards.forEach(card => {
+
+        const productName =
+        card.querySelector("h3")
+        .textContent
+        .toLowerCase();
+
+        if(productName.includes(keyword)){
+
+            card.style.display = "block";
+            found = true;
+
+        }else{
+
+            card.style.display = "none";
+
+        }
+    });
+
+    // If no product found, show all products
+    if(!found){
+
+        cards.forEach(card => {
+            card.style.display = "block";
+        });
+
+    }
+}
+window.onload = function(){
+
+    const keyword =
+    new URLSearchParams(
+        window.location.search
+    ).get("search");
+
+    if(keyword){
+
+        searchProduct(keyword);
+
+    }else{
+
+        loadProducts();
+
+    }
+}
 
 
-// window.onload = function(){
+async function searchProduct(keyword){
 
-//     const keyword =
-//     new URLSearchParams(
-//         window.location.search
-//     ).get("search");
+    const response =
+    await fetch(
+        `http://localhost:5000/search-products?keyword=${keyword}`
+    );
 
-//     if(keyword){
+    const products =
+    await response.json();
 
-//         searchProduct(keyword);
+    let output = "";
 
-//     }else{
+    products.forEach(product=>{
 
-//         loadProducts();
+        output += `
+        <div class="product-card">
 
-//     }
-// }
+            <img src="${product.image}">
 
+            <h3>${product.name}</h3>
 
-// async function searchProduct(keyword){
+            <p>₹${product.price}</p>
 
-//     const response =
-//     await fetch(
-//         `http://localhost:5000/search-products?keyword=${keyword}`
-//     );
+            <p>Stock: ${product.stock}</p>
 
-//     const products =
-//     await response.json();
+            <button
+                onclick="viewProduct(${product.id})">
+                View Details
+            </button>
 
-//     let output = "";
+        </div>
+        `;
+    });
 
-//     products.forEach(product=>{
-
-//         output += `
-//         <div class="product-card">
-
-//             <img src="${product.image}">
-
-//             <h3>${product.name}</h3>
-
-//             <p>₹${product.price}</p>
-
-//             <p>Stock: ${product.stock}</p>
-
-//             <button
-//                 onclick="viewProduct(${product.id})">
-//                 View Details
-//             </button>
-
-//         </div>
-//         `;
-//     });
-
-//     document.getElementById(
-//         "productContainer"
-//     ).innerHTML = output;
-// }
+    document.getElementById(
+        "productContainer"
+    ).innerHTML = output;
+}
 
 function viewproduct(id){
     window.location.href=`product-details.html?id=${id}`;
