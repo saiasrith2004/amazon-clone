@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+    
+</head>
+<body>
+   <nav class="navbar">
+        <div   class="logo">
+        Amazon clone
+
+        <span class="hamburger" onclick="toggleMenu()">
+            ☰
+        </span>
+    </div>
+
+        <div class="search-box">
+            <input type="text" name="" id="searchInput" placeholder="Search Products">
+            <button onclick="searchProducts" id="b">  🔍</button>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="details-container">
+
+    <div class="product-image">
+        <img id="detailImage" src="images/hplaptop.png">
+        
+    </div>
+
+    <div class="product-info">
+        <h1 id="detailName"> HP Laptop</h1>
+        <h2 id="detailPrice">₹45000</h2>
+        <h2 id="stock"></h2>
+        <p id="detailDescription">
+
+</p>
+
+        <button onclick="addToCart()">
+            Add To Cart
+        </button>
+
+        <button onclick="buyNow()">
+            Buy Now
+        </button>
+    </div>
+    
+
+
+  
+</div>
+
+    <script src="details.js">
+
+    </script>
+</body>
+</html>

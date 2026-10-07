@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div   class="logo">
+        Amazon Admin
+
+        <span class="hamburger" onclick="toggleMenu()">
+            ☰
+        </span>
+    </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#users">Users</a></li>
+            <li><a href="login.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section class="dashboard" id="dashboard">
+
+        <div class="card">
+            <h2 id="totalUsers">0</h2>
+            <p>Total Users</p>
+        </div>
+
+        <div class="card">
+            <h2 id="totalProducts">0</h2>
+            <p>Total Products</p>
+        </div>
+
+        <div class="card">
+            <h2 id="totalOrders">0</h2>
+            <p>Total Orders</p>
+        </div>
+
+    </section>
+
+    <section class="add-product" id="products">
+
+        <h2>Add Product</h2>
+
+        <form id="productForm">
+
+            <input
+                type="text"
+                id="product_name"
+                placeholder="Product Name"
+                required
+            >
+
+            <input
+                type="number"
+                id="price"
+                placeholder="Price"
+                required
+            >
+
+            <input
+                type="text"
+                id="image"
+                placeholder="Image URL"
+                required
+            >
+            <input
+    type="number"
+    id="stock"
+    placeholder="Enter Stock"
+    required
+>
+
+            <textarea
+                id="description"
+                placeholder="Description"
+                required
+            ></textarea>
+
+            <button type="submit">
+                Add Product
+            </button>
+
+        </form>
+
+    </section>
+
+    <section class="manage-products">
+
+        <h2>Manage Products</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>stock</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="productTable">
+
+            </tbody>
+
+        </table>
+
+    </section>
+    <section class="manage-orders" id="orders">
+
+    <h2>Manage Orders</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>User ID</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Payment</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody id="ordersTable">
+
+        </tbody>
+
+    </table>
+
+</section>
+
+    <section class="manage-users" id="users">
+
+        <h2>Manage Users</h2>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="userTable">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>

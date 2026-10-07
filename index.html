@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+     <nav class="navbar">
+     
+        <div   class="logo">
+        Amazon clone
+
+
+        <span class="hamburger" onclick="toggleMenu()">
+            ☰
+        </span>
+    </div>
+
+        <div class="search-box">
+            <input type="text" name="" id="searchInput" placeholder="Search Products">
+            <button onclick="searchProducts" id="b">  🔍</button>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Amazon Clone</h1>
+            <p>Shop Electronics, Mobiles, Laptops and More</p>
+            <a href="products.html" class="btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2>Categories</h2>
+
+        <div class="category-container">
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400" alt="">
+                <h3>Mobiles</h3>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400" alt="">
+                <h3>Laptops</h3>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400" alt="">
+                <h3>Headphones</h3>
+            </div>
+
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400" alt="">
+                <h3>Smart Watches</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <h2>Featured Products</h2>
+
+        <div id="featuredProducts" class="product-grid"></div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="featured">
+        <h2>Best Sellers</h2>
+
+        <div id="bestSellers" class="product-grid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 Amazon Clone. All Rights Reserved.</p>
+    </footer>
+
+    <script src="index.js"></script>
+
+</body>
+</html>

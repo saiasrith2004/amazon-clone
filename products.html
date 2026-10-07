@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+  <nav class="navbar">
+        <div   class="logo">
+        Amazon clone
+
+        <span class="hamburger" onclick="toggleMenu()">
+            ☰
+        </span>
+    </div>
+
+        <div class="search-box">
+            <input type="text" name="" id="searchInput" placeholder="Search Products">
+            <button onclick="searchProducts()" id="b">  🔍</button>
+            <div id="productContainer"></div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+
+<h1>All Products</h1>
+
+<div
+id="products"
+class="products-grid">
+</div>
+
+</div>
+
+<script src="products.js"></script>
+</body>
+</html>

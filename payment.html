@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment</title>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    body{
+    font-family:Arial,sans-serif;
+    background:#eaeded;
+    margin:0;
+    padding:20px;
+}
+
+.container{
+    max-width:900px;
+    margin:30px auto;
+    background:#fff;
+    border-radius:12px;
+    padding:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+h2{
+    text-align:center;
+    color:#232f3e;
+}
+
+.order-summary{
+    background:#f7f7f7;
+    padding:15px;
+    border-radius:10px;
+    margin-bottom:20px;
+}
+
+.product-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:10px 0;
+    border-bottom:1px solid #ddd;
+}
+
+.product-item img{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+}
+
+.product-item h4{
+    margin:0;
+}
+
+#totalAmount{
+    text-align:right;
+    color:#b12704;
+}
+
+.payment-option{
+    margin-top:20px;
+}
+
+label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+}
+
+select,
+input[type="text"],
+input[type="password"]{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    margin-top:8px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#ffd814;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+button:hover{
+    background:#f7ca00;
+}
+
+#upiBox,
+#cardBox{
+    display:none;
+    margin-top:15px;
+}
+
+@media(max-width:768px){
+
+    .container{
+        width:95%;
+        padding:15px;
+    }
+
+    .product-item{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .product-item img{
+        width:120px;
+        height:120px;
+    }
+}
+</style>
+
+
+</head>
+<body>
+
+
+<div class="container">
+    <div class="order-summary">
+
+    <h3>Order Summary</h3>
+
+    <div id="productList"></div>
+
+    <h2 id="totalAmount">
+        Total: ₹0
+    </h2>
+
+</div>
+
+    <h2>Select Payment Method</h2>
+
+
+
+
+    <div class="payment-option">
+
+    <label>Select Payment Method</label>
+
+    <select id="paymentMethod" onchange="showPayment()">
+
+        <option value="COD">
+            Cash On Delivery
+        </option>
+
+        <option value="UPI">
+            UPI
+        </option>
+
+        <option value="CARD">
+            Credit / Debit Card
+        </option>
+
+    </select>
+
+</div>
+
+<div id="upiBox">
+
+    <input
+        type="text"
+        id="upiId"
+        placeholder="Enter UPI ID"
+    >
+
+</div>
+
+<div id="cardBox">
+
+    <input
+        type="text"
+        id="cardNumber"
+        placeholder="Card Number"
+        maxlength="16"
+    >
+
+    <input
+        type="text"
+        id="cardName"
+        placeholder="Card Holder Name"
+    >
+
+    <input
+        type="text"
+        id="expiry"
+        placeholder="MM/YY"
+    >
+
+    <input
+        type="password"
+        id="cvv"
+        placeholder="CVV"
+        maxlength="3"
+    >
+
+</div>
+<div id="checkoutMessage"></div>
+    <button onclick="placeOrder()">Place Order</button>
+
+</div>
+
+<script>
+    function showPayment(){
+
+    const method =
+    document.getElementById("paymentMethod").value;
+
+    document.getElementById("upiBox").style.display =
+    method === "UPI" ? "block" : "none";
+
+    document.getElementById("cardBox").style.display =
+    method === "CARD" ? "block" : "none";
+}
+
+showPayment();
+
+
+function placeOrder(){
+
+    const userId =
+    sessionStorage.getItem("userId");
+
+    const paymentMethod =
+    document.getElementById("paymentMethod").value;
+
+    document.getElementById("checkoutMessage").textContent = "";
+
+    if(paymentMethod === "UPI"){
+
+        const upiId =
+        document.getElementById("upiId").value.trim();
+
+        if(!upiId){
+
+            document.getElementById(
+                "checkoutMessage"
+            ).textContent =
+            "Please Enter UPI ID";
+
+            return;
+        }
+    }
+
+    if(paymentMethod === "CARD"){
+
+        const cardNumber =
+        document.getElementById("cardNumber").value.trim();
+
+        const cardName =
+        document.getElementById("cardName").value.trim();
+
+        const expiry =
+        document.getElementById("expiry").value.trim();
+
+        const cvv =
+        document.getElementById("cvv").value.trim();
+
+        if(
+            !cardNumber ||
+            !cardName ||
+            !expiry ||
+            !cvv
+        ){
+
+            document.getElementById(
+                "checkoutMessage"
+            ).textContent =
+            "Please Fill All Card Details";
+
+            return;
+        }
+
+        if(cardNumber.length < 16){
+
+            document.getElementById(
+                "checkoutMessage"
+            ).textContent =
+            "Invalid Card Number";
+
+            return;
+        }
+
+        if(cvv.length < 3){
+
+            document.getElementById(
+                "checkoutMessage"
+            ).textContent =
+            "Invalid CVV";
+
+            return;
+        }
+    }
+
+    fetch("http://localhost:5000/checkout",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            userId,
+            paymentMethod
+
+        })
+
+    })
+
+    .then(res=>res.json())
+
+    .then(data=>{
+
+        if(!data.success){
+
+            document.getElementById(
+                "checkoutMessage"
+            ).textContent =
+            data.message;
+
+            return;
+        }
+
+        document.getElementById(
+            "checkoutMessage"
+        ).textContent = "";
+
+        alert(data.message);
+
+        window.location.href =
+        "orders.html";
+
+    })
+
+    .catch(err=>{
+
+        console.log(err);
+
+        document.getElementById(
+            "checkoutMessage"
+        ).textContent =
+        "Checkout Failed";
+
+    });
+
+}
+
+async function loadOrderSummary(){
+
+    const userId =
+    sessionStorage.getItem("userId");
+
+    try{
+
+        const response =
+        await fetch(
+            `http://localhost:5000/checkout/${userId}`
+        );
+
+        const products =
+        await response.json();
+
+        if(products.length === 0){
+
+            alert("Cart is Empty");
+
+            window.location.href =
+            "cart.html";
+
+            return;
+        }
+
+        let output = "";
+        let total = 0;
+
+        products.forEach(product=>{
+
+            const subtotal =
+            product.price * product.quantity;
+
+            total += subtotal;
+
+            output += `
+            <div class="product-item">
+
+                <img src="${product.image}">
+
+                <div>
+
+                    <h4>
+                        ${product.product_name || product.name}
+                    </h4>
+
+                    <p>
+                        Price: ₹${product.price}
+                    </p>
+
+                    <p>
+                        Quantity: ${product.quantity}
+                    </p>
+
+                    <p>
+                        Subtotal: ₹${subtotal}
+                    </p>
+
+                </div>
+
+            </div>
+            `;
+        });
+
+        document.getElementById("productList")
+        .innerHTML = output;
+
+        document.getElementById("totalAmount")
+        .textContent =
+        `Total: ₹${total}`;
+
+    }
+    catch(error){
+
+        console.log(error);
+
+        alert("Failed To Load Order Summary");
+    }
+}
+
+loadOrderSummary();
+</script>
+
+
+
+</body>
+</html>
