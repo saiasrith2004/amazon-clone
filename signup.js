@@ -22,6 +22,8 @@ document.getElementById("signupForm").addEventListener("submit",async (e)=>{
     let password=document.getElementById("signupPassword").value.trim();
     let address =document.getElementById("address").value.trim();
     let confirmPassword=document.getElementById("confirmPassword").value.trim();
+    const passwordPattern =
+  /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9\s]).{6,}$/;
      if(username===""||email===""||phone===""|| dob===""||password===""||confirmPassword===""||address===""){
         alert("please enter all details");
         return;
@@ -34,6 +36,11 @@ document.getElementById("signupForm").addEventListener("submit",async (e)=>{
      if(!/^[0-9]{10}$/.test(phone)){
         alert("phone must contain 10 digits")
         return;
+     }
+     if(!passwordPattern.test(password)){
+        alert("password must contain 6 letters");
+        return;
+        
      }
      if(password!==confirmPassword){
         alert("password does not match");
