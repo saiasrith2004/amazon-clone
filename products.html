@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+  <nav class="navbar">
+        <div   class="logo">
+        Amazon clone
+
+        <span class="hamburger" onclick="toggleMenu()">
+            ☰
+        </span>
+    </div>
+
+        <div class="search-box">
+            <input type="text" name="" id="searchInput" placeholder="Search Products">
+            <button onclick="searchProducts()" id="b">  🔍</button>
+            <div id="productContainer"></div>
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="products.html">Products</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="orders.html">Orders</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+    
+
+
+
+    
+    <div class="products-toolbar">
+    <h2>All Products</h2>
+
+
+    <div class="price-filter">
+        <label>Price:</label>
+        <span>₹0</span>
+
+        <input
+            type="range"
+            id="priceRange"
+            min="0"
+            max="100000"
+            value="100000"
+        >
+
+        <span>₹<span id="priceValue">100000</span></span>
+    </div>
+
+    <div class="sort-filter">
+        <label for="sortFilter">Sort:</label>
+        <select id="sortFilter">
+            <option value="Relevence">Relevence</option>
+            <option value="low-high">Price: Low to High</option>
+            <option value="high-low">Price: High to Low</option>
+         
+        </select>
+    </div>
+
+    
+
+</div>
+
+<p id="resultCount"></p>
+
+<div id="products" class="products-grid"></div>
+
+   <div id="products" class="products-grid">
+            
+        </div>
+
+
+
+
+
+<script src="products.js"></script>
+</body>
+</html>
+
+

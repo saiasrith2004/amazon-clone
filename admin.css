@@ -1,0 +1,526 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f4f4;
+}
+
+/* Navbar */
+
+.navbar{
+    background:#131921;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    position:sticky;
+    top:0;
+}
+.logo{
+    display:flex;
+    align-items:center;
+    gap:15px;   /* space between Admin and hamburger */
+}
+
+.hamburger{
+    display:none;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.nav-links{
+    display:flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+    margin-top: 15px;
+    list-style:none;
+}
+
+.nav-links li{
+    margin-left:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    /* font-size:18px; */
+    font-weight: bold;
+}
+
+/* Dashboard Cards */
+
+.dashboard{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:12px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+}
+
+.card h2{
+    font-size:40px;
+    color:#ff9900;
+}
+
+.card p{
+    margin-top:10px;
+    font-size:18px;
+}
+
+/* Add Product */
+
+.add-product{
+    width:90%;
+    margin:20px auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+}
+
+.add-product h2{
+    margin-bottom:20px;
+}
+
+.add-product form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.add-product input,
+.add-product textarea{
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+.add-product button{
+    background:#ff9900;
+    border:none;
+    padding:12px;
+    cursor:pointer;
+    font-size:18px;
+    border-radius:8px;
+}
+
+.add-product button:hover{
+    background:#e68a00;
+}
+
+/* Tables */
+
+.manage-products,
+.manage-users{
+    width:90%;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:12px;
+}
+
+.manage-products h2,
+.manage-users h2{
+    margin-bottom:20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#232f3e;
+    color:white;
+    padding:15px;
+}
+
+td{
+    padding:15px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+tr:hover{
+    background:#f9f9f9;
+}
+
+/* Buttons */
+
+.edit-btn{
+    background:#28a745;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.delete-btn{
+    background:red;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.edit-btn:hover{
+    background:#1f8a38;
+}
+
+.delete-btn:hover{
+    background:#c82333;
+}
+
+/* 
+.hamburger{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+} */
+
+/* Mobile */
+
+/* Responsive Design */
+
+/* Tablet */
+/* @media screen and (max-width: 992px){ */
+
+/* 
+ */
+/* @media screen and (max-width: 768px){
+
+    .hamburger {
+        display: block;
+    }
+    .navbar{
+        flex-direction:column;
+        gap:15px;
+        padding:15px;
+    }
+
+    .nav-links{
+       display: none;
+       flex-direction: column;
+       gap: 15px;
+       background: #232f3e;
+       padding: 15px 0;
+       margin-top: 15px;
+    }
+    .nav-links.show{
+        display: flex;
+    }
+
+    .nav-links li{
+        margin:8px;
+    }
+
+    .dashboard{
+        grid-template-columns:1fr;
+        padding:15px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    .card h2{
+        font-size:32px;
+    }
+
+    .add-product,
+    .manage-products,
+    .manage-users{
+        width:95%;
+        padding:15px;
+    }
+
+    .add-product input,
+    .add-product textarea,
+    .add-product button{
+        width:100%;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+
+    th,
+    td{
+        font-size:14px;
+        padding:10px;
+    }
+}    .dashboard{
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .navbar{
+        padding:15px 20px;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .nav-links li{
+        margin-left:15px;
+    }
+}
+
+@media screen and (max-width:768px){
+
+    .navbar{
+        padding:15px;
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .logo{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        gap:15px;
+        width:100%;
+    }
+
+    .hamburger{
+        display:block;
+        font-size:28px;
+    }
+
+    .nav-links{
+        display:none;
+        flex-direction:column;
+        width:100%;
+        text-align:center;
+        background:#232f3e;
+        margin-top:10px;
+        padding:15px 0;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+}
+ */
+
+
+
+ .logo{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:15px;
+}
+
+.hamburger{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.navbar{
+    background:#131921;
+    padding:15px 20px;
+    position:relative;
+}
+
+.logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.hamburger{
+    display:none;
+    color:white;
+    font-size:30px;
+    cursor:pointer;
+}
+
+
+
+@media(max-width:768px){
+
+    .navbar{
+        position:relative;
+    }
+
+    .hamburger{
+        display:block;
+        font-size:28px;
+        cursor:pointer;
+        color:white;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:60px;
+        right:30px;      /* show on right side */
+        width:180px;     /* small box */
+        background:#232f3e;
+        border-radius:8px;
+        box-shadow:0 4px 10px rgba(0,0,0,0.3);
+        flex-direction:column;
+        list-style:none;
+        z-index:999;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links li{
+        padding:12px;
+        text-align:center;
+        border-bottom:1px solid #444;
+    }
+
+    .nav-links li:last-child{
+        border-bottom:none;
+    }
+
+    .nav-links a{
+        color:white;
+        text-decoration:none;
+        font-weight:bold;
+    }
+}
+
+/* @media(max-width:768px){
+
+    .hamburger{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:#232f3e;
+        flex-direction:column;
+        list-style:none;
+        text-align:center;
+        z-index:999;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .nav-links li{
+        padding:15px;
+        border-bottom:1px solid #444;
+    }
+
+    .nav-links a{
+        color:white;
+        text-decoration:none;
+        font-weight:bold;
+    }
+} */
+
+/* Small Mobile */
+@media screen and (max-width: 480px){
+
+    .logo{
+        font-size:20px;
+        text-align:center;
+    }
+
+    .nav-links a{
+        font-size:14px;
+    }
+
+    .card h2{
+        font-size:28px;
+    }
+
+    .card p{
+        font-size:14px;
+    }
+
+    .add-product h2,
+    .manage-products h2,
+    .manage-users h2{
+        font-size:20px;
+    }
+
+    th,
+    td{
+        font-size:12px;
+        padding:8px;
+    }
+
+    .edit-btn,
+    .delete-btn{
+        padding:6px 10px;
+        font-size:12px;
+    }
+}
+
+/* Large Desktop */
+@media screen and (min-width: 1200px){
+
+    .dashboard{
+        grid-template-columns: repeat(3,1fr);
+    }
+
+    .add-product,
+    .manage-products,
+    .manage-users{
+        max-width:1400px;
+    }
+}
+
+/* Quantity box improvements */
+.quantity-box{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+}
+
+.qty-btn{
+    width:36px !important;
+    height:36px !important;
+    border:1px solid #ccc !important;
+    border-radius:6px !important;
+    background:#fff !important;
+    font-size:18px !important;
+    font-weight:bold !important;
+    cursor:pointer;
+}
+
+.qty-btn:hover{
+    background:#fff !important;
+    transform:none !important;
+}
+
+.qty-value{
+    min-width:30px;
+    text-align:center;
+    font-weight:bold;
+}
